@@ -1,8 +1,18 @@
 <app-game-header></app-game-header>
 <div class="layout">
-  <div></div>
-  <div class="board">
-    <app-card *ngFor="let word of words; let i = index;" [word]="word" [answer]="answers[i]"></app-card>
+  <div class="team-wrapper">
+    <h2>Red Team</h2>
+    <span *ngFor="let name of redTeam">{{ name }}</span>
   </div>
-  <div></div>
+  <div class="board">
+    <app-card
+      *ngFor="let word of words; let i = index"
+      [word]="word"
+      [answer]="answers[i]"
+    ></app-card>
+  </div>
+  <div class="team-wrapper">
+    <h2>BlueTeam</h2>
+    <span *ngFor="let name of blueTeam">{{ name }}</span>
+  </div>
 </div>

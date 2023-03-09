@@ -1,3 +1,4 @@
+import { TeamManagerService } from './../../services/team-manager.service';
 import {
   GameManagerService,
   CardAnswer,
@@ -10,7 +11,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./game-page.component.scss'],
 })
 export class GamePageComponent {
-  constructor(private gs: GameManagerService) {}
+  constructor(private gs: GameManagerService, private tm: TeamManagerService) {}
   words: string[] = this.gs.playWords;
   answers: CardAnswer[] = this.gs.answers;
+  redTeam = this.tm._redTeam;
+  blueTeam = this.tm._blueTeam;
 }

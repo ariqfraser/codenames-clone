@@ -29,6 +29,8 @@ export class LobbyComponent implements OnInit {
   }
 
   start() {
+    this.tm._blueTeam = this.blueTeamRef.nativeElement.value.split('\n');
+    this.tm._redTeam = this.redTeamRef.nativeElement.value.split('\n');
     this.gs.startGame();
     this.router.navigate(['/play']);
   }
