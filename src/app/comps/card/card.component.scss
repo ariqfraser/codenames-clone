@@ -30,7 +30,7 @@
     position: relative;
 
     &::before {
-        content: "💣🕵️";
+        content: "💣";
         position: absolute;
         top: 1rem;
         left: 1rem;
@@ -38,7 +38,7 @@
     }
 
     &::after {
-        content: "💣🕵️";
+        content: "💣";
         position: absolute;
         bottom: 1rem;
         right: 1rem;
