@@ -36,6 +36,7 @@ export class GameManagerService {
   }
 
   private shuffleAnswers() {
+    this.answers = [];
     const teamSize = (25 - this.bombCount) / 2;
     for (let i = 0; i < teamSize; i++) {
       this.answers[i] = CardAnswer.BLUE;
@@ -45,8 +46,9 @@ export class GameManagerService {
     for (let i = 0; i < this.bombCount; i++) {
       this.answers.push(CardAnswer.BOMB);
     }
+    console.log(teamSize, this.answers);
 
-    const shuffledArray: CardAnswer[] = [...this.answers]; // make a copy of the input array to shuffle
+    const shuffledArray: CardAnswer[] = [...this.answers];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1)); // generate a random index within the range of the unshuffled subarray
       [shuffledArray[i], shuffledArray[j]] = [
@@ -56,7 +58,6 @@ export class GameManagerService {
     }
 
     this.answers = shuffledArray;
-    console.log(this.answers);
   }
 
   startGame() {

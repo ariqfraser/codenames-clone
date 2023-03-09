@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "deploy": "ng build --base-href=https://ariqfraser.github.io/codenames-clone/ && ngh --dir dist/code-names-clone",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
