@@ -64,6 +64,39 @@ export class GameManagerService {
     this.getRandomWords();
     this.shuffleAnswers();
   }
+
+  getAnswers(): void {
+    const answers: Answer[] = this.playWords.map((word, i) => ({
+      word,
+      ans: this.answers[i],
+    }));
+
+    const blue = answers.filter((ans) => ans.ans === CardAnswer.BLUE);
+    const red = answers.filter((ans) => ans.ans === CardAnswer.RED);
+    const bomb = answers.filter((ans) => ans.ans === CardAnswer.BOMB);
+
+    let output = `--------------------------\n🟦 Blue Team's Answers 🟦\n--------------------------\n`;
+    blue.forEach((ans) => {
+      output += ans.word + '\n';
+    });
+
+    output += `\n-------------------------\n🟥 Red Team's Answers 🟥\n-------------------------\n`;
+    red.forEach((ans) => {
+      output += ans.word + '\n';
+    });
+
+    output += `\n-----------\n💣 Bombs 💣\n-----------\n`;
+    bomb.forEach((ans) => {
+      output += ans.word + '\n';
+    });
+
+    navigator.clipboard.writeText(output);
+  }
+}
+
+export interface Answer {
+  word: string;
+  ans: CardAnswer;
 }
 
 export enum CardAnswer {
