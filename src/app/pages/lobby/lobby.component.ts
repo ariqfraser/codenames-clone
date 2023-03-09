@@ -18,6 +18,8 @@ export class LobbyComponent implements AfterViewInit {
   @ViewChild('redTeamRef') redTeamRef!: ElementRef<HTMLTextAreaElement>;
   @ViewChild('blueTeamRef') blueTeamRef!: ElementRef<HTMLTextAreaElement>;
 
+  bombCount: number = this.gs.bombCount;
+
   ngAfterViewInit() {
     this.loadTeams();
   }
@@ -44,5 +46,9 @@ export class LobbyComponent implements AfterViewInit {
     localStorage.setItem('CN_red_team', this.redTeamRef.nativeElement.value);
     this.gs.startGame();
     this.router.navigate(['/play']);
+  }
+
+  setBombCount($event: number) {
+    this.gs.bombCount = this.bombCount;
   }
 }

@@ -8,6 +8,10 @@ import { SplashPageComponent } from './pages/splash-page/splash-page.component';
 import { GamePageComponent } from './pages/game-page/game-page.component';
 import { CardComponent } from './comps/card/card.component';
 import { GameHeaderComponent } from './comps/game-header/game-header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSliderModule } from '@angular/material/slider';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,13 +20,17 @@ import { GameHeaderComponent } from './comps/game-header/game-header.component';
     SplashPageComponent,
     GamePageComponent,
     CardComponent,
-    GameHeaderComponent
+    GameHeaderComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatChipsModule,
+    MatSliderModule,
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

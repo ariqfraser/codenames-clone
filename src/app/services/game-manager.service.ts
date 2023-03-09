@@ -7,13 +7,14 @@ import { Injectable } from '@angular/core';
 export class GameManagerService {
   constructor() {}
 
-  bombCount: number = 3;
+  bombCount: number = 2;
   playWords: string[] = [];
   answers: CardAnswer[] = [];
 
+  startingTeam: CardAnswer.BLUE | CardAnswer.RED = CardAnswer.BLUE;
+
   private getRandomWords(): void {
     const randomWords: string[] = [];
-
     const indexList: number[] = [];
 
     function getWord() {
@@ -37,7 +38,7 @@ export class GameManagerService {
 
   private shuffleAnswers() {
     this.answers = [];
-    const teamSize = (25 - this.bombCount) / 2;
+    const teamSize = (24 - this.bombCount) / 2;
     for (let i = 0; i < teamSize; i++) {
       this.answers[i] = CardAnswer.BLUE;
       this.answers[i + teamSize] = CardAnswer.RED;
@@ -46,6 +47,7 @@ export class GameManagerService {
     for (let i = 0; i < this.bombCount; i++) {
       this.answers.push(CardAnswer.BOMB);
     }
+    this.answers.push(this.startingTeam);
     console.log(teamSize, this.answers);
 
     const shuffledArray: CardAnswer[] = [...this.answers];
@@ -63,6 +65,15 @@ export class GameManagerService {
   startGame() {
     this.getRandomWords();
     this.shuffleAnswers();
+  }
+
+  setRandomStartingTeam() {
+    const rand = Math.round(Math.random());
+    if (rand) {
+      this.startingTeam = CardAnswer.BLUE;
+      return;
+    }
+    this.startingTeam = CardAnswer.RED;
   }
 
   getAnswers(): void {

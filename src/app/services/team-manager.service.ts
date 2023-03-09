@@ -35,7 +35,6 @@ export class TeamManagerService {
     this._redTeam = shuffledArray.slice(0, midIndex); // extract the elements before the midpoint
     this._blueTeam = shuffledArray.slice(midIndex); // extract the elements from the midpoint to the end
     this.updateTeams();
-    console.log(this._blueTeam, this._redTeam);
   }
 
   private updateTeams() {

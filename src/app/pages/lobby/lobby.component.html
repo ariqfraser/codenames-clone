@@ -4,7 +4,18 @@
     <textarea #redTeamRef></textarea>
   </div>
   <div class="setting-wrapper">
-      <button (click)="shuffle()">SHUFFLE TEAMS</button>
+      <div class="bomb-setting"><span>No. of bombs</span><span>{{ bombCount }}💣</span></div>
+    
+    <mat-slider min="2" max="16" step="2" color="accent">
+      <input matSliderThumb (valueChange)="setBombCount($event)" [(ngModel)]="bombCount"/>
+    </mat-slider>
+    <span>Starting Team</span>
+    <mat-chip-listbox aria-label="Starting Team Selection">
+      <mat-chip-option>Blue</mat-chip-option>
+      <mat-chip-option color="warn">Red</mat-chip-option>
+      <mat-chip-option color="accent" selected>Random</mat-chip-option>
+    </mat-chip-listbox>
+    <button (click)="shuffle()">SHUFFLE TEAMS</button>
     <button class="play" (click)="start()">START GAME</button>
   </div>
   <div class="team-wrapper">
