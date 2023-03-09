@@ -75,12 +75,27 @@ export class GameManagerService {
     const red = answers.filter((ans) => ans.ans === CardAnswer.RED);
     const bomb = answers.filter((ans) => ans.ans === CardAnswer.BOMB);
 
-    let output = `--------------------------\n🟦 Blue Team's Answers 🟦\n--------------------------\n`;
+    let map = '----------\n🗺 MAP 🗺\n----------\n';
+
+    for (let i = 0; i < answers.length; i++) {
+      const ans = answers[i].ans;
+      if (ans === CardAnswer.RED) map += '🟥';
+      if (ans === CardAnswer.BLUE) map += '🟦';
+      if (ans === CardAnswer.BOMB) map += '💣';
+      if ((i + 1) % 5 === 0) {
+        map += '\n';
+      }
+    }
+
+    let output = map + '\n';
+    console.log(map);
+
+    output += `-----------------------------\n🟦 Blue Team's Answers 🟦\n-----------------------------\n`;
     blue.forEach((ans) => {
       output += ans.word + '\n';
     });
 
-    output += `\n-------------------------\n🟥 Red Team's Answers 🟥\n-------------------------\n`;
+    output += `\n-------------------------------\n🟥 Red Team's Answers 🟥\n-------------------------------\n`;
     red.forEach((ans) => {
       output += ans.word + '\n';
     });

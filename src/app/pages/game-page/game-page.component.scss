@@ -6,5 +6,22 @@
 
 .layout {
     display: grid;
-    grid-template-columns: 1fr 50vw 1fr;
+    grid-template-columns: 1fr 60vw 1fr;
+    margin-inline: auto;
+}
+
+.team-wrapper {
+    display: flex;
+    flex-direction: column;
+    h2, span {
+        text-align: center;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+
+    span {
+        font-size: 1.25rem
+    }
 }
