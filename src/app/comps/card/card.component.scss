@@ -8,25 +8,41 @@
 
     font-size: 1.5rem;
     color: var(--black);
-    
+
     aspect-ratio: 1.5/1;
-    
+
     border-radius: 8px;
-    border: 2px solid rgba(0,0,0,0.1);
-    
+    border: 2px solid rgba(0, 0, 0, 0.1);
+
     transition: all 400ms ease-in-out;
-    
+
     user-select: none;
     cursor: pointer;
 
     &:hover {
-        filter: drop-shadow(0 0 16px rgba(0,0,0,0.5))
+        filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.5))
     }
 }
 
 .bomb {
     background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
+    position: relative;
+
+    &::before {
+        content: "💣🕵️";
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        
+    }
+
+    &::after {
+        content: "💣🕵️";
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+    }
 }
 
 .red {

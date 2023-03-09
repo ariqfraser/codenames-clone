@@ -75,20 +75,7 @@ export class GameManagerService {
     const red = answers.filter((ans) => ans.ans === CardAnswer.RED);
     const bomb = answers.filter((ans) => ans.ans === CardAnswer.BOMB);
 
-    let map = '----------\n🗺 MAP 🗺\n----------\n';
-
-    for (let i = 0; i < answers.length; i++) {
-      const ans = answers[i].ans;
-      if (ans === CardAnswer.RED) map += '🟥';
-      if (ans === CardAnswer.BLUE) map += '🟦';
-      if (ans === CardAnswer.BOMB) map += '💣';
-      if ((i + 1) % 5 === 0) {
-        map += '\n';
-      }
-    }
-
-    let output = map + '\n';
-    console.log(map);
+    let output = this.generateMap() + '\n';
 
     output += `-----------------------------\n🟦 Blue Team's Answers 🟦\n-----------------------------\n`;
     blue.forEach((ans) => {
@@ -106,6 +93,33 @@ export class GameManagerService {
     });
 
     navigator.clipboard.writeText(output);
+  }
+
+  private generateMap(answers?: Answer[]): string {
+    if (!answers) {
+      answers = this.playWords.map((word, i) => ({
+        word,
+        ans: this.answers[i],
+      }));
+    }
+
+    let map = '----------\n🗺 MAP 🗺\n----------\n';
+
+    for (let i = 0; i < answers.length; i++) {
+      const ans = answers[i].ans;
+      if (ans === CardAnswer.RED) map += '🟥';
+      if (ans === CardAnswer.BLUE) map += '🟦';
+      if (ans === CardAnswer.BOMB) map += '💣';
+      if ((i + 1) % 5 === 0) {
+        map += '\n';
+      }
+    }
+
+    return map;
+  }
+
+  copyMap() {
+    navigator.clipboard.writeText(this.generateMap());
   }
 }
 

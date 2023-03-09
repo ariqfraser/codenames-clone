@@ -11,4 +11,8 @@ export class GameHeaderComponent {
   copyAns() {
     this.gm.getAnswers();
   }
+
+  copyMap() {
+    this.gm.copyMap();
+  }
 }
