@@ -1,0 +1,38 @@
+.container {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    font-size: 1.5rem;
+    color: var(--black);
+    
+    aspect-ratio: 1.5/1;
+    
+    border-radius: 8px;
+    border: 2px solid rgba(0,0,0,0.1);
+    
+    transition: all 400ms ease-in-out;
+    
+    user-select: none;
+    cursor: pointer;
+
+    &:hover {
+        filter: drop-shadow(0 0 16px rgba(0,0,0,0.5))
+    }
+}
+
+.bomb {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+.red {
+    background-color: rgba(255, 48, 48, 0.481);
+}
+
+.blue {
+    background-color: rgba(35, 138, 255, 0.5);
+}

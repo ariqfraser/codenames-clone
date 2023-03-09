@@ -1,0 +1,8 @@
+<app-game-header></app-game-header>
+<div class="layout">
+  <div></div>
+  <div class="board">
+    <app-card *ngFor="let word of words; let i = index;" [word]="word" [answer]="answers[i]"></app-card>
+  </div>
+  <div></div>
+</div>

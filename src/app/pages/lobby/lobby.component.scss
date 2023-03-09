@@ -1,0 +1,40 @@
+.page-wrapper {
+    margin-top: 10vh;
+    width: min(1200px, 90%);
+    margin-inline: auto;
+    border: 10px red;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1rem;
+}
+
+.red {
+    color: rgb(195, 0, 0);
+}
+
+.blue {
+    color: rgb(7, 0, 195);
+}
+
+.team-wrapper {
+    position: relative;
+
+    label {
+        position: absolute;
+        top: 0;
+        left: 1rem;
+        transform: translateY(-50%);
+        font-weight: 900;
+        font-size: 1.5rem;
+        text-transform: capitalize;
+    }
+
+    textarea {
+        width: calc(100% - 2rem);
+        min-height: 400px;
+        border: 2px solid rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+
+        padding: 1rem;
+    }
+}
