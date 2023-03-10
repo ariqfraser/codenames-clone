@@ -10,10 +10,10 @@
       <input matSliderThumb (valueChange)="setBombCount($event)" [(ngModel)]="bombCount"/>
     </mat-slider>
     <span>Starting Team</span>
-    <mat-chip-listbox aria-label="Starting Team Selection">
-      <mat-chip-option>Blue</mat-chip-option>
+    <mat-chip-listbox aria-label="Starting Team Selection" (change)="setStartingTeam($event)">
       <mat-chip-option color="warn">Red</mat-chip-option>
       <mat-chip-option color="accent" selected>Random</mat-chip-option>
+      <mat-chip-option>Blue</mat-chip-option>
     </mat-chip-listbox>
     <button (click)="shuffle()">SHUFFLE TEAMS</button>
     <button class="play" (click)="start()">START GAME</button>

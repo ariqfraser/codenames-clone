@@ -2,6 +2,7 @@
 <div class="layout">
   <div class="team-wrapper">
     <h2>Red Team</h2>
+    <small *ngIf="startingTeam === 'RED'">Plays First</small>
     <span *ngFor="let name of redTeam">{{ name }}</span>
   </div>
   <div class="board">
@@ -13,6 +14,7 @@
   </div>
   <div class="team-wrapper">
     <h2>Blue Team</h2>
+    <small *ngIf="startingTeam === 'BLUE'">Plays First</small>
     <span *ngFor="let name of blueTeam">{{ name }}</span>
   </div>
 </div>

@@ -21,6 +21,7 @@ export class GamePageComponent implements OnInit {
   answers: CardAnswer[] = this.gs.answers;
   redTeam = this.tm._redTeam;
   blueTeam = this.tm._blueTeam;
+  startingTeam: CardAnswer.BLUE | CardAnswer.RED = this.gs.startingTeam;
 
   ngOnInit() {
     if (!this.words.length) {

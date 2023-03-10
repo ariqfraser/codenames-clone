@@ -1,5 +1,8 @@
 import { TeamManagerService } from './../../services/team-manager.service';
-import { GameManagerService } from './../../services/game-manager.service';
+import {
+  GameManagerService,
+  CardAnswer,
+} from './../../services/game-manager.service';
 import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -50,5 +53,19 @@ export class LobbyComponent implements AfterViewInit {
 
   setBombCount($event: number) {
     this.gs.bombCount = this.bombCount;
+  }
+
+  setStartingTeam($event: any) {
+    switch ($event.value) {
+      case 'Red':
+        this.gs.startingTeam = CardAnswer.RED;
+        break;
+      case 'Blue':
+        this.gs.startingTeam = CardAnswer.BLUE;
+        break;
+      case 'Random':
+        this.gs.setRandomStartingTeam();
+        break;
+    }
   }
 }
