@@ -34,7 +34,7 @@
         position: absolute;
         top: 1rem;
         left: 1rem;
-        
+
     }
 
     &::after {
@@ -46,9 +46,9 @@
 }
 
 .red {
-    background-color: rgba(255, 48, 48, 0.481);
+    background-color: var(--team-a);
 }
 
 .blue {
-    background-color: rgba(35, 138, 255, 0.5);
+    background-color: var(--team-b);
 }

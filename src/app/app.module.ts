@@ -12,6 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
+import { ScoreTickerComponent } from './comps/score-ticker/score-ticker.component';
+import { ButtonComponent } from './comps/button/button.component';
+import {  MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,8 @@ import { FormsModule } from '@angular/forms';
     GamePageComponent,
     CardComponent,
     GameHeaderComponent,
+    ScoreTickerComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +34,7 @@ import { FormsModule } from '@angular/forms';
     MatChipsModule,
     MatSliderModule,
     FormsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent],

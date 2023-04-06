@@ -11,7 +11,7 @@ export class GameManagerService {
   playWords: string[] = [];
   answers: CardAnswer[] = [];
 
-  startingTeam: CardAnswer.BLUE | CardAnswer.RED = CardAnswer.BLUE;
+  startingTeam: CardAnswer = CardAnswer.BOMB;
 
   private getRandomWords(): void {
     const randomWords: string[] = [];
@@ -46,6 +46,10 @@ export class GameManagerService {
 
     for (let i = 0; i < this.bombCount; i++) {
       this.answers.push(CardAnswer.BOMB);
+    }
+
+    if (this.startingTeam === CardAnswer.BOMB) {
+      this.setRandomStartingTeam();
     }
     this.answers.push(this.startingTeam);
     console.log(teamSize, this.answers);
