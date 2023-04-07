@@ -1,5 +1,58 @@
 :host {
-
-    margin: 2rem;
+    position: absolute;
+    margin-top: 5vh;
     margin-inline: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    
+}
+
+.score {
+    display: flex;
+    width: 20rem;
+}
+
+
+.card {
+    height: 4rem;
+    aspect-ratio: 1.68/1;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    
+    &:last-of-type {
+        margin-left: auto;
+    }
+
+    .points {
+        font-size: 3rem;
+    }
+    
+    p {
+        margin: 0;
+        padding: 0;
+        margin-inline: auto;
+    }
+}
+
+.red {
+    background-color: var(--team-a);
+}
+
+.blue {
+    background-color: var(--team-b);
+}
+
+.starting-message {
+    margin-inline: auto;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.bombs {
+    display: flex;
 }

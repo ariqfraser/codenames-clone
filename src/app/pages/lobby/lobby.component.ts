@@ -1,3 +1,4 @@
+import { ScoreManagerService } from './../../services/score-manager.service';
 import { TeamManagerService } from './../../services/team-manager.service';
 import {
   GameManagerService,
@@ -15,7 +16,8 @@ export class LobbyComponent implements AfterViewInit {
   constructor(
     private router: Router,
     private gs: GameManagerService,
-    private tm: TeamManagerService
+    private tm: TeamManagerService,
+    private score: ScoreManagerService
   ) {}
 
   @ViewChild('redTeamRef') redTeamRef!: ElementRef<HTMLTextAreaElement>;
@@ -49,6 +51,7 @@ export class LobbyComponent implements AfterViewInit {
     localStorage.setItem('CN_red_team', this.redTeamRef.nativeElement.value);
     this.gs.startGame();
     this.router.navigate(['/play']);
+    this.score.clearScores();
   }
 
   setBombCount($event: number) {

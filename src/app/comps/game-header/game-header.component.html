@@ -1,2 +1,13 @@
-<button (click)="copyAns()">copy answer words & map</button>
-<button (click)="copyMap()">copy map 🟥🟦</button>
+<ng-container *ngIf="score$ | async as score">
+    <div class="score">
+        <div class="card red"><p><span class="points">{{ score.red }}</span>/{{maxRed}}</p></div>
+        <div class="card blue"><p><span class="points">{{ score.blue }}</span>/{{maxBlue}}</p></div>
+    </div>
+  </ng-container>
+  
+  <div class="bombs">
+    <span *ngFor="let _ of bombCount">💣</span>
+  </div>
+  
+
+<p class="starting-message">{{startingTeam}} Plays First</p>

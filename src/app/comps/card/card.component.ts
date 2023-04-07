@@ -16,25 +16,23 @@ export class CardComponent {
   showAns: boolean = false;
 
   revealAns() {
-    this.showAns = !this.showAns;
     this.updateScore();
+    this.showAns = true;
   }
 
   private updateScore() {
     if (this.answer === CardAnswer.BOMB) {
       return;
     }
-    if (this.answer === CardAnswer.BLUE && this.showAns) {
+    
+    if (this.showAns) {
+      return;
+    }
+    if (this.answer === CardAnswer.BLUE) {
       this.score.addBlue();
     }
-    if (this.answer === CardAnswer.RED && this.showAns) {
+    if (this.answer === CardAnswer.RED) {
       this.score.addRed();
-    }
-    if (this.answer === CardAnswer.BLUE && !this.showAns) {
-      this.score.minusBlue();
-    }
-    if (this.answer === CardAnswer.RED && !this.showAns) {
-      this.score.minusRed();
     }
   }
 }

@@ -36,4 +36,9 @@ export class ScoreManagerService {
     const newValue = this._redPoints$.value - 1;
     this._redPoints$.next(Math.max(0, newValue));
   }
+  
+  clearScores() {
+    this._redPoints$.next(0)
+    this._bluePoints$.next(0)
+  }
 }

@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { ScoreTickerComponent } from './comps/score-ticker/score-ticker.component';
 import { ButtonComponent } from './comps/button/button.component';
 import {  MatIconModule } from '@angular/material/icon';
+import { PlayerCardComponent } from './comps/player-card/player-card.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {  MatIconModule } from '@angular/material/icon';
     GameHeaderComponent,
     ScoreTickerComponent,
     ButtonComponent,
+    PlayerCardComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,10 +17,9 @@ export class GamePageComponent implements OnInit {
     private gs: GameManagerService,
     private tm: TeamManagerService,
     private router: Router,
-    private score: ScoreManagerService
   ) {}
   
-  score$ = this.score.points$;
+
   words: string[] = this.gs.playWords;
   answers: CardAnswer[] = this.gs.answers;
   redTeam = this.tm._redTeam;
