@@ -72,12 +72,7 @@ export class GameManagerService {
   }
 
   setRandomStartingTeam() {
-    const rand = Math.round(Math.random());
-    if (rand) {
-      this.startingTeam = CardAnswer.BLUE;
-      return;
-    }
-    this.startingTeam = CardAnswer.RED;
+    this.startingTeam = Math.random() < 0.5 ? CardAnswer.BLUE : CardAnswer.RED;
   }
 
   getAnswers(): void {
@@ -90,7 +85,7 @@ export class GameManagerService {
     const red = answers.filter((ans) => ans.ans === CardAnswer.RED);
     const bomb = answers.filter((ans) => ans.ans === CardAnswer.BOMB);
 
-    let output = this.generateMap() + '\n';
+    let output = this.generateMap(answers) + '\n';
 
     output += `-----------------------------\n🟦 Blue Team's Answers 🟦\n-----------------------------\n`;
     blue.forEach((ans) => {
@@ -110,14 +105,7 @@ export class GameManagerService {
     navigator.clipboard.writeText(output);
   }
 
-  private generateMap(answers?: Answer[]): string {
-    if (!answers) {
-      answers = this.playWords.map((word, i) => ({
-        word,
-        ans: this.answers[i],
-      }));
-    }
-
+  private generateMap(answers: Answer[]): string {
     let map = '----------\n🗺 MAP 🗺\n----------\n';
 
     for (let i = 0; i < answers.length; i++) {
@@ -132,9 +120,11 @@ export class GameManagerService {
 
     return map;
   }
-
   copyMap() {
-    navigator.clipboard.writeText(this.generateMap());
+    const map = this.generateMap(
+      this.playWords.map((word, i) => ({ word, ans: this.answers[i] }))
+    );
+    navigator.clipboard.writeText(map);
   }
 }
 

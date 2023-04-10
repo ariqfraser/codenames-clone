@@ -36,4 +36,8 @@ export class GameHeaderComponent implements OnInit {
     this.maxBlue = count.BLUE || 0;
     this.bombCount = new Array(count.BOMB || 0);
   }
+  
+  getAnswers() {
+    this.gm.getAnswers();
+  }
 }
