@@ -31,4 +31,8 @@ export class GamePageComponent implements OnInit {
       this.router.navigate(['/lobby']);
     }
   }
+  
+  copyAnswers() {
+    this.gs.getAnswers();
+  }
 }
