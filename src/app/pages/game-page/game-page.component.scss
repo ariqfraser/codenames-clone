@@ -74,7 +74,7 @@
         background-color: rgb(109, 230, 96);
         font-weight: 600;
         padding: 0.5rem 1rem;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         border-radius: 0.5rem;
         border: 2px solid rgba(0, 0, 0, 0.1);
         transition: box-shadow 200ms ease-in-out, background-color 100ms ease-in-out;
@@ -85,6 +85,7 @@
         align-items: center;
         
         &.click {
+            box-shadow: 0px 0px 4px rgba(0,0,0,0.1);
             background-color: rgb(73, 123, 67);
         }
 
