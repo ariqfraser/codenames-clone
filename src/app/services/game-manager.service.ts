@@ -39,10 +39,9 @@ export class GameManagerService {
     copyAnswers() {
         const { seed, bombCount } = this.gameDataSubject.getValue();
         const url = `
-sdlajsdlkjadas
-dasd
-asd
-http://localhost:4200/answers/${seed}/${bombCount}
+Guide your team to discovering all the codenames!
+Click the link bellow to view answers. 💣
+${window.location.origin}/codenames-clone/answers/${seed}/${bombCount}
 `;
         this.clipboard.copy(url);
         console.log('answers copied');
