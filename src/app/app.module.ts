@@ -14,9 +14,11 @@ import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
 import { ScoreTickerComponent } from './comps/score-ticker/score-ticker.component';
 import { ButtonComponent } from './comps/button/button.component';
-import {  MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { PlayerCardComponent } from './comps/player-card/player-card.component';
 import { AnswersComponent } from './pages/answers/answers.component';
+import { QRCodeModule } from 'angularx-qrcode';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { AnswersComponent } from './pages/answers/answers.component';
     MatChipsModule,
     MatSliderModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    QRCodeModule,
+    ClipboardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

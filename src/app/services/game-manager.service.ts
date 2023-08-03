@@ -1,140 +1,81 @@
 import { PossibleWords } from './../util/words';
 import { Injectable } from '@angular/core';
+import { DeterministicRandomService } from './deterministic-random.service';
+import { GameData } from '../types/game.types';
+import { BehaviorSubject } from 'rxjs';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class GameManagerService {
-  constructor() {}
+    constructor(private dr: DeterministicRandomService, private clipboard: Clipboard) {}
 
-  bombCount: number = 2;
-  playWords: string[] = [];
-  answers: CardAnswer[] = [];
+    bombCount: number = 2;
 
-  startingTeam: CardAnswer = CardAnswer.BOMB;
+    startingTeam: CardAnswer = CardAnswer.BOMB;
 
-  private getRandomWords(): void {
-    const randomWords: string[] = [];
-    const indexList: number[] = [];
+    gameSeed: number = 0;
 
-    function getWord() {
-      if (indexList.length === 25) {
-        return;
-      }
-      const randomIndex = Math.floor(Math.random() * PossibleWords.length);
-      if (indexList.includes(randomIndex)) {
-        getWord();
-        return;
-      }
-      randomWords.push(PossibleWords[randomIndex]);
-      indexList.push(randomIndex);
-      getWord();
-    }
-
-    getWord();
-
-    this.playWords = randomWords;
-  }
-
-  private shuffleAnswers() {
-    this.answers = [];
-    const teamSize = (24 - this.bombCount) / 2;
-    for (let i = 0; i < teamSize; i++) {
-      this.answers[i] = CardAnswer.BLUE;
-      this.answers[i + teamSize] = CardAnswer.RED;
-    }
-
-    for (let i = 0; i < this.bombCount; i++) {
-      this.answers.push(CardAnswer.BOMB);
-    }
-
-    if (this.startingTeam === CardAnswer.BOMB) {
-      this.setRandomStartingTeam();
-    }
-    this.answers.push(this.startingTeam);
-    console.log(teamSize, this.answers);
-
-    const shuffledArray: CardAnswer[] = [...this.answers];
-    for (let i = shuffledArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1)); // generate a random index within the range of the unshuffled subarray
-      [shuffledArray[i], shuffledArray[j]] = [
-        shuffledArray[j],
-        shuffledArray[i],
-      ]; // swap the elements at indices i and j
-    }
-
-    this.answers = shuffledArray;
-  }
-
-  startGame() {
-    this.getRandomWords();
-    this.shuffleAnswers();
-  }
-
-  setRandomStartingTeam() {
-    this.startingTeam = Math.random() < 0.5 ? CardAnswer.BLUE : CardAnswer.RED;
-  }
-
-  getAnswers(): void {
-    const answers: Answer[] = this.playWords.map((word, i) => ({
-      word,
-      ans: this.answers[i],
-    }));
-
-    const blue = answers.filter((ans) => ans.ans === CardAnswer.BLUE);
-    const red = answers.filter((ans) => ans.ans === CardAnswer.RED);
-    const bomb = answers.filter((ans) => ans.ans === CardAnswer.BOMB);
-
-    let output = this.generateMap(answers) + '\n';
-
-    output += `-----------------------------\n🟦 Blue Team's Answers 🟦\n-----------------------------\n`;
-    blue.forEach((ans) => {
-      output += ans.word + '\n';
+    private gameDataSubject = new BehaviorSubject<GameData>({
+        cards: [],
+        blueCount: 0,
+        redCount: 0,
+        bombCount: 0,
+        seed: 0,
     });
+    gameData$ = this.gameDataSubject.asObservable();
 
-    output += `\n-------------------------------\n🟥 Red Team's Answers 🟥\n-------------------------------\n`;
-    red.forEach((ans) => {
-      output += ans.word + '\n';
-    });
-
-    output += `\n-----------\n💣 Bombs 💣\n-----------\n`;
-    bomb.forEach((ans) => {
-      output += ans.word + '\n';
-    });
-
-    navigator.clipboard.writeText(output);
-  }
-
-  private generateMap(answers: Answer[]): string {
-    let map = '----------\n🗺 MAP 🗺\n----------\n';
-
-    for (let i = 0; i < answers.length; i++) {
-      const ans = answers[i].ans;
-      if (ans === CardAnswer.RED) map += '🟥';
-      if (ans === CardAnswer.BLUE) map += '🟦';
-      if (ans === CardAnswer.BOMB) map += '💣';
-      if ((i + 1) % 5 === 0) {
-        map += '\n';
-      }
+    startGame() {
+        this.gameSeed = this.dr.generateSeed();
+        const gameData = this.dr.getAnswers(this.gameSeed, this.bombCount);
+        this.gameDataSubject.next(gameData);
+        console.log(gameData);
+        this.copyAnswers();
+        // this.getRandomWords();
+        // this.shuffleAnswers();
     }
 
-    return map;
-  }
-  copyMap() {
-    const map = this.generateMap(
-      this.playWords.map((word, i) => ({ word, ans: this.answers[i] }))
-    );
-    navigator.clipboard.writeText(map);
-  }
+    copyAnswers() {
+        const { seed, bombCount } = this.gameDataSubject.getValue();
+        const url = `
+sdlajsdlkjadas
+dasd
+asd
+http://localhost:4200/answers/${seed}/${bombCount}
+`;
+        this.clipboard.copy(url);
+        console.log('answers copied');
+    }
+
+    setRandomStartingTeam() {
+        this.startingTeam = Math.random() < 0.5 ? CardAnswer.BLUE : CardAnswer.RED;
+    }
+
+    private generateMap(answers: Answer[]): string {
+        let map = '----------\n🗺 MAP 🗺\n----------\n';
+
+        for (let i = 0; i < answers.length; i++) {
+            const ans = answers[i].ans;
+            if (ans === CardAnswer.RED) map += '🟥';
+            if (ans === CardAnswer.BLUE) map += '🟦';
+            if (ans === CardAnswer.BOMB) map += '💣';
+            if ((i + 1) % 5 === 0) {
+                map += '\n';
+            }
+        }
+
+        return map;
+    }
 }
 
 export interface Answer {
-  word: string;
-  ans: CardAnswer;
+    word: string;
+    ans: CardAnswer;
 }
 
 export enum CardAnswer {
-  RED = 'RED',
-  BLUE = 'BLUE',
-  BOMB = 'BOMB',
+    RED = 'RED',
+    BLUE = 'BLUE',
+    BOMB = 'BOMB',
 }

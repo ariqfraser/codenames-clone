@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: SplashPageComponent },
   { path: 'lobby', component: LobbyComponent },
   { path: 'play', component: GamePageComponent },
-  { path: 'a/:seed/:bombs', component: AnswersComponent },
+  { path: 'answers/:seed/:bombs', component: AnswersComponent },
 ];
 
 @NgModule({

@@ -85,7 +85,6 @@ export class DeterministicRandomService {
       teamB.push(selection[0]);
     }
 
-    console.log(teamA, teamB, bombs);
     return { teamA, teamB, bombs };
   }
 
@@ -96,7 +95,6 @@ export class DeterministicRandomService {
       words,
       desiredBombs
     );
-    console.log(words);
 
     const answers: Card[] = words.map((word) => ({
       word,
@@ -107,7 +105,6 @@ export class DeterministicRandomService {
         : 'BOMB',
     }));
 
-    console.log(answers);
     return {
       cards: answers,
       redCount: teamA.length,
@@ -118,6 +115,9 @@ export class DeterministicRandomService {
   }
 
   generateSeed() {
-    return Math.floor(Math.random() * this.m);
+    const date = new Date();
+    const time = date.getTime();
+    const noise = time / Math.random();
+    return Math.floor(Math.random() * (this.m + noise));
   }
 }

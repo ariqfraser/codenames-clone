@@ -50,12 +50,12 @@ export class LobbyComponent implements AfterViewInit {
     localStorage.setItem('CN_blue_team', this.blueTeamRef.nativeElement.value);
     localStorage.setItem('CN_red_team', this.redTeamRef.nativeElement.value);
     this.gs.startGame();
-    this.router.navigate(['/play']);
     this.score.clearScores();
+    this.router.navigate(['/play']);
   }
 
-  setBombCount($event: number) {
-    this.gs.bombCount = this.bombCount;
+  setBombCount(count: number) {
+    this.gs.bombCount = count;
   }
 
   setStartingTeam($event: any) {

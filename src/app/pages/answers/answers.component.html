@@ -1,2 +1,17 @@
 <p>Current Seed: {{ currSeed }}</p>
 <p>New Seed: {{ newSeed }}</p>
+
+<qrcode
+    [qrdata]="'google.com'"
+    [allowEmptyString]="true"
+    [ariaLabel]="'QR Code image with the following content...'"
+    [cssClass]="'center'"
+    [colorDark]="'#000000'"
+    [colorLight]="'#ffffffff'"
+    elementType="url"
+    [errorCorrectionLevel]="'H'"
+    [margin]="4"
+    [scale]="8"
+    title="Scan to view answers"
+    [width]="200"
+    #QR></qrcode>

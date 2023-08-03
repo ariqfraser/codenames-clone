@@ -22,26 +22,34 @@
   </div>
 </div> -->
 
-<app-game-header [startingTeam]="startingTeam"></app-game-header>
+<div class="team-section">
+    <app-player-card *ngFor="let name of redTeam" [red]="true" [name]="name"></app-player-card>
+</div>
+
+<ng-container *ngIf="gameData$ | async as gameData">
+    <app-game-header></app-game-header>
+    <div class="board">
+        <app-card
+            *ngFor="let card of gameData.cards; let i = index"
+            [word]="card.word"
+            [answer]="card.answer">
+        </app-card>
+    </div>
+</ng-container>
 
 <div class="team-section">
-  <app-player-card  *ngFor="let name of redTeam" [red]="true" [name]="name"></app-player-card>
+    <app-player-card
+        *ngFor="let name of blueTeam"
+        [blue]="true"
+        [name]="name"></app-player-card>
 </div>
-
-<div class="board">
-  <app-card
-    *ngFor="let word of words; let i = index"
-    [word]="word"
-    [answer]="answers[i]">
-  </app-card>
-</div>
-
-<div class="team-section">
-  <app-player-card  *ngFor="let name of blueTeam" [blue]="true" [name]="name"></app-player-card>
-</div>
-
 
 <div class="footer">
-   <button  #answersBtn (click)="copyAnswers()" (mousedown)="answersBtn.classList.add('click')" (mouseup)="answersBtn.classList.remove('click')">Copy Answers <mat-icon fontIcon="assignment"></mat-icon></button>
-   
+    <button
+        #answersBtn
+        (click)="copyAnswers()"
+        (mousedown)="answersBtn.classList.add('click')"
+        (mouseup)="answersBtn.classList.remove('click')">
+        Copy Answers <mat-icon fontIcon="assignment"></mat-icon>
+    </button>
 </div>

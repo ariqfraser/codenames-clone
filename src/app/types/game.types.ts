@@ -1,7 +1,9 @@
 export interface Card {
   word: string;
-  answer: 'BOMB' | 'RED' | 'BLUE';
+  answer: Answer;
 }
+
+export type Answer = 'BOMB' | 'RED' | 'BLUE';
 
 export interface GameData {
   cards: Card[];

@@ -1,6 +1,7 @@
 import { ScoreManagerService } from './../../services/score-manager.service';
 import { CardAnswer } from './../../services/game-manager.service';
 import { Component, Input } from '@angular/core';
+import { Answer } from 'src/app/types/game.types';
 
 @Component({
   selector: 'app-card',
@@ -10,7 +11,7 @@ import { Component, Input } from '@angular/core';
 export class CardComponent {
   constructor(private score: ScoreManagerService) {}
 
-  @Input() answer: CardAnswer = CardAnswer.BOMB;
+  @Input() answer: Answer = 'BOMB';
   @Input() word: string = '';
 
   showAns: boolean = false;
@@ -21,17 +22,18 @@ export class CardComponent {
   }
 
   private updateScore() {
-    if (this.answer === CardAnswer.BOMB) {
+    console.log('clic');
+    if (this.answer === 'BOMB') {
       return;
     }
-    
+
     if (this.showAns) {
       return;
     }
-    if (this.answer === CardAnswer.BLUE) {
+    if (this.answer === 'BLUE') {
       this.score.addBlue();
     }
-    if (this.answer === CardAnswer.RED) {
+    if (this.answer === 'RED') {
       this.score.addRed();
     }
   }
