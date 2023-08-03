@@ -16,6 +16,7 @@ import { ScoreTickerComponent } from './comps/score-ticker/score-ticker.componen
 import { ButtonComponent } from './comps/button/button.component';
 import {  MatIconModule } from '@angular/material/icon';
 import { PlayerCardComponent } from './comps/player-card/player-card.component';
+import { AnswersComponent } from './pages/answers/answers.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { PlayerCardComponent } from './comps/player-card/player-card.component';
     ScoreTickerComponent,
     ButtonComponent,
     PlayerCardComponent,
+    AnswersComponent,
   ],
   imports: [
     BrowserModule,
