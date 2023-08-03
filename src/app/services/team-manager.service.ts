@@ -34,6 +34,8 @@ export class TeamManagerService {
     const midIndex: number = Math.ceil(shuffledArray.length / 2); // find the index of the midpoint of the array
     this._redTeam = shuffledArray.slice(0, midIndex); // extract the elements before the midpoint
     this._blueTeam = shuffledArray.slice(midIndex); // extract the elements from the midpoint to the end
+    this._redTeam = this._redTeam.filter((value) => value.trim() !== '');
+    this._blueTeam = this._blueTeam.filter((value) => value.trim() !== '');
     this.updateTeams();
   }
 
