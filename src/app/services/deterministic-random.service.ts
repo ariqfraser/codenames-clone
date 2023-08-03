@@ -116,4 +116,8 @@ export class DeterministicRandomService {
       seed,
     };
   }
+
+  generateSeed() {
+    return Math.floor(Math.random() * this.m);
+  }
 }
