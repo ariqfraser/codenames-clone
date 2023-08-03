@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PossibleWords } from '../util/words';
+import { Card, GameData } from '../types/game.types';
 
 @Injectable({
   providedIn: 'root',
@@ -88,7 +89,7 @@ export class DeterministicRandomService {
     return { teamA, teamB, bombs };
   }
 
-  getAnswers(seed: number, desiredBombs: number = 2) {
+  getAnswers(seed: number, desiredBombs: number = 2): GameData {
     const words = this.getRandomSelection(seed, 25, PossibleWords);
     const { teamA, teamB } = this.assignRandomAnswers(
       seed,
@@ -97,26 +98,22 @@ export class DeterministicRandomService {
     );
     console.log(words);
 
-    const answers: Answer[] = words.map((word) => ({
+    const answers: Card[] = words.map((word) => ({
       word,
       answer: teamA.includes(word)
-        ? 'TEAM_A'
+        ? 'RED'
         : teamB.includes(word)
-        ? 'TEAM_B'
+        ? 'BLUE'
         : 'BOMB',
     }));
 
     console.log(answers);
     return {
       cards: answers,
-      teamACount: teamA.length,
-      teamBCount: teamB.length,
+      redCount: teamA.length,
+      blueCount: teamB.length,
       bombCount: desiredBombs,
+      seed,
     };
   }
-}
-
-interface Answer {
-  word: string;
-  answer: 'BOMB' | 'TEAM_A' | 'TEAM_B';
 }
