@@ -1,17 +1,12 @@
-<p>Current Seed: {{ currSeed }}</p>
-<p>New Seed: {{ newSeed }}</p>
+<ng-container *ngIf="gameData$ | async as gameData">
+    <div class="board">
+        <app-card
+            *ngFor="let card of gameData.cards; let i = index"
+            [word]="card.word"
+            [answer]="card.answer"
+            [isAnswer]="true">
+        </app-card>
+    </div>
+</ng-container>
 
-<qrcode
-    [qrdata]="'google.com'"
-    [allowEmptyString]="true"
-    [ariaLabel]="'QR Code image with the following content...'"
-    [cssClass]="'center'"
-    [colorDark]="'#000000'"
-    [colorLight]="'#ffffffff'"
-    elementType="url"
-    [errorCorrectionLevel]="'H'"
-    [margin]="4"
-    [scale]="8"
-    title="Scan to view answers"
-    [width]="200"
-    #QR></qrcode>
+<p>Tip: You can click on a card to track the guesses yourself!</p>

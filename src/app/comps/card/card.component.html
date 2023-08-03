@@ -4,7 +4,8 @@
     [ngClass]="{
         bomb: answer === 'BOMB' && showAns,
         red: answer === 'RED' && showAns,
-        blue: answer === 'BLUE' && showAns
+        blue: answer === 'BLUE' && showAns,
+        guessed: guessed && isAnswer
     }">
     {{ word }}
 </div>

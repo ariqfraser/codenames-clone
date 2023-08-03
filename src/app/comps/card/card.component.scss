@@ -22,7 +22,7 @@
     cursor: pointer;
 
     &:hover {
-        filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.5))
+        filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.5));
     }
 }
 
@@ -54,4 +54,8 @@
 
 .blue {
     background-color: var(--team-b);
+}
+
+.guessed {
+    opacity: 0.5;
 }

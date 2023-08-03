@@ -1,38 +1,25 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  AfterViewInit,
-  ElementRef,
-} from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DeterministicRandomService } from 'src/app/services/deterministic-random.service';
+import { map } from 'rxjs';
 
 @Component({
-  selector: 'app-answers',
-  templateUrl: './answers.component.html',
-  styleUrls: ['./answers.component.scss'],
+    selector: 'app-answers',
+    templateUrl: './answers.component.html',
+    styleUrls: ['./answers.component.scss'],
 })
 export class AnswersComponent implements OnInit, AfterViewInit {
-  constructor(
-    private dr: DeterministicRandomService,
-    private route: ActivatedRoute
-  ) {}
+    constructor(private dr: DeterministicRandomService, private route: ActivatedRoute) {}
 
-  currSeed?: number;
-  newSeed?: number;
+    currSeed?: number;
+    newSeed?: number;
+    gameData$ = this.route.params.pipe(
+        map(({ seed, bombs }) => {
+            return this.dr.getAnswers(seed, bombs);
+        })
+    );
 
-  @ViewChild('QR', { static: false }) qrCode?: any;
+    ngOnInit() {}
 
-  ngOnInit() {
-    this.route.params.subscribe(({ seed, bombs }) => {
-      const gameData = this.dr.getAnswers(seed, bombs);
-      console.log(this.dr.generateSeed());
-      console.log(gameData);
-    });
-  }
-
-  ngAfterViewInit(): void {
-    console.log(this.qrCode);
-  }
+    ngAfterViewInit(): void {}
 }
