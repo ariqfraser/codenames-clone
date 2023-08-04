@@ -10,6 +10,7 @@ import { SoundService } from 'src/app/services/sound.service';
 })
 export class ExplodingCardComponent {
     @Input() text = 'Example';
+    @Input() isAnswer = false;
 
     shake = false;
     explode = false;

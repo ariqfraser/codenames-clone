@@ -1,3 +1,4 @@
+@use "sass:math";
 :host {
     position: relative;
     width: 100%;
@@ -132,7 +133,7 @@
                 filter: blur((random(3) * 0.5) + px);
 
                 //Create random percentage for each child
-                $random_percentage: (random(1000) + 100) / 100;
+                $random_percentage: math.div((random(1000) + 100), 100);
 
                 //Add the random position, by default the particles will go to the top-left side
                 @include random-position(top-left, $random_percentage);

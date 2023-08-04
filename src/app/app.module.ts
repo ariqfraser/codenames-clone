@@ -17,7 +17,6 @@ import { ButtonComponent } from './comps/button/button.component';
 import { MatIconModule } from '@angular/material/icon';
 import { PlayerCardComponent } from './comps/player-card/player-card.component';
 import { AnswersComponent } from './pages/answers/answers.component';
-import { QRCodeModule } from 'angularx-qrcode';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { BackgroundComponent } from './comps/background/background.component';
 import { ExplodingCardComponent } from './comps/exploding-card/exploding-card.component';
@@ -45,7 +44,6 @@ import { ExplodingCardComponent } from './comps/exploding-card/exploding-card.co
         MatSliderModule,
         FormsModule,
         MatIconModule,
-        QRCodeModule,
         ClipboardModule,
     ],
     providers: [],
