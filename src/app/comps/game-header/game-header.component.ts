@@ -15,7 +15,7 @@ export class GameHeaderComponent implements OnInit {
 
     bombCount: any[] = [];
     gameData$ = this.gm.gameData$.pipe(
-        tap(({ bombCount }) => {
+        tap(({ bombCount, blueCount, redCount }) => {
             this.bombCount = new Array(bombCount);
         })
     );

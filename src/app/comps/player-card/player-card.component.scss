@@ -3,12 +3,12 @@
     align-items: center;
     border-radius: 50vh;
     border: 2px solid rgba(0, 0, 0, 0.1);
-    
+    user-select: none;
+
     mat-icon {
-        color:rgba(0, 0, 0, 0.25);
+        color: rgba(0, 0, 0, 0.25);
     }
 }
-
 
 .red {
     background-color: var(--team-a);

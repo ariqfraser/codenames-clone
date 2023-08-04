@@ -19,32 +19,36 @@ import { PlayerCardComponent } from './comps/player-card/player-card.component';
 import { AnswersComponent } from './pages/answers/answers.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { BackgroundComponent } from './comps/background/background.component';
+import { ExplodingCardComponent } from './comps/exploding-card/exploding-card.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LobbyComponent,
-    SplashPageComponent,
-    GamePageComponent,
-    CardComponent,
-    GameHeaderComponent,
-    ScoreTickerComponent,
-    ButtonComponent,
-    PlayerCardComponent,
-    AnswersComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatChipsModule,
-    MatSliderModule,
-    FormsModule,
-    MatIconModule,
-    QRCodeModule,
-    ClipboardModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        LobbyComponent,
+        SplashPageComponent,
+        GamePageComponent,
+        CardComponent,
+        GameHeaderComponent,
+        ScoreTickerComponent,
+        ButtonComponent,
+        PlayerCardComponent,
+        AnswersComponent,
+        BackgroundComponent,
+        ExplodingCardComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatChipsModule,
+        MatSliderModule,
+        FormsModule,
+        MatIconModule,
+        QRCodeModule,
+        ClipboardModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

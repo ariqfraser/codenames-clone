@@ -29,11 +29,13 @@
 <ng-container *ngIf="gameData$ | async as gameData">
     <app-game-header></app-game-header>
     <div class="board">
-        <app-card
-            *ngFor="let card of gameData.cards; let i = index"
-            [word]="card.word"
-            [answer]="card.answer">
-        </app-card>
+        <ng-container *ngFor="let card of gameData.cards; let i = index">
+            <app-card *ngIf="card.answer !== 'BOMB'" [word]="card.word" [answer]="card.answer">
+            </app-card>
+            <app-exploding-card
+                [text]="card.word"
+                *ngIf="card.answer === 'BOMB'"></app-exploding-card>
+        </ng-container>
     </div>
 </ng-container>
 

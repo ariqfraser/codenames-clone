@@ -1,7 +1,7 @@
 import { ScoreManagerService } from './../../services/score-manager.service';
-import { CardAnswer } from './../../services/game-manager.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Answer } from 'src/app/types/game.types';
+import { SoundService } from 'src/app/services/sound.service';
 
 @Component({
     selector: 'app-card',
@@ -9,7 +9,7 @@ import { Answer } from 'src/app/types/game.types';
     styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-    constructor(private score: ScoreManagerService) {}
+    constructor(private score: ScoreManagerService, private sound: SoundService) {}
 
     @Input() answer: Answer = 'BOMB';
     @Input() word: string = '';
@@ -23,16 +23,20 @@ export class CardComponent implements OnInit {
     }
 
     revealAns() {
+        if (this.showAns) {
+            return;
+        }
         if (this.isAnswer) {
             this.markGuessed();
             return;
         }
+        this.sound.playPen();
         this.updateScore();
         this.showAns = true;
     }
 
     markGuessed() {
-        this.guessed = true;
+        this.guessed = !this.guessed;
     }
 
     private updateScore() {
@@ -44,9 +48,11 @@ export class CardComponent implements OnInit {
         if (this.showAns) {
             return;
         }
+
         if (this.answer === 'BLUE') {
             this.score.addBlue();
         }
+
         if (this.answer === 'RED') {
             this.score.addRed();
         }

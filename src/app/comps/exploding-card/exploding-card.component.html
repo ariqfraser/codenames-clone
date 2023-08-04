@@ -1,0 +1,25 @@
+<div class="button" [ngClass]="{ shake: shake, explode: explode }" (click)="startDetonation()">
+    <span class="content" [class.exploded]="hasExploded">{{ text }}</span>
+    <span class="particles" *ngIf="hasExploded">
+        <span>💣</span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span>💣</span>
+    </span>
+</div>

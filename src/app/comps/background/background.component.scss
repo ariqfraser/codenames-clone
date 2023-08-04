@@ -1,0 +1,17 @@
+$bg-color: 250;
+$text-color: $bg-color - 50;
+:host {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background-color: rgb($bg-color, $bg-color, $bg-color);
+}
+
+p {
+    font-size: 5rem;
+    font-weight: 700;
+    margin: 0;
+    color: rgb($text-color, $text-color, $text-color);
+    position: absolute;
+    bottom: 0;
+}

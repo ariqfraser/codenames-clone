@@ -1,3 +1,9 @@
+:host {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
 .container {
     background-color: #fff;
     display: flex;
@@ -14,7 +20,6 @@
     // aspect-ratio: 1.5/1;
 
     border-radius: 8px;
-    border: 2px solid rgba(0, 0, 0, 0.1);
 
     transition: all 400ms ease-in-out;
 
