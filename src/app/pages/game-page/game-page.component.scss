@@ -4,6 +4,7 @@
     grid-auto-rows: 1fr;
     gap: 0.75rem;
     aspect-ratio: 1.68/1;
+    width: min(900px, 90%);
 }
 
 :host {
