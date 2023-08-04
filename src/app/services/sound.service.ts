@@ -10,13 +10,13 @@ const getRand = (max: number): number => {
 })
 export class SoundService {
     constructor() {
-        this.explosions.push(new Audio('../../assets/audio/kaboom.mp3'));
-        this.explosions.push(new Audio('../../assets/audio/ohmy.mp3'));
-        this.rumbles.push(new Audio('../../assets/audio/rumble.flac'));
-        this.rumbles.push(new Audio('../../assets/audio/nukk_incoming.mp3'));
+        this.explosions.push(new Audio('./assets/audio/kaboom.mp3'));
+        this.explosions.push(new Audio('./assets/audio/ohmy.mp3'));
+        this.rumbles.push(new Audio('./assets/audio/rumble.flac'));
+        this.rumbles.push(new Audio('./assets/audio/nukk_incoming.mp3'));
     }
 
-    private pen = new Audio('../../assets/audio/click.mp3');
+    private pen = new Audio('./assets/audio/click.mp3');
     private rumbles: HTMLMediaElement[] = [];
     private explosions: HTMLMediaElement[] = [];
 
