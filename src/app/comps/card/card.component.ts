@@ -23,11 +23,11 @@ export class CardComponent implements OnInit {
     }
 
     revealAns() {
-        if (this.showAns) {
-            return;
-        }
         if (this.isAnswer) {
             this.markGuessed();
+            return;
+        }
+        if (this.showAns) {
             return;
         }
         this.sound.playPen();
