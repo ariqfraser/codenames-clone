@@ -20,6 +20,7 @@ import { AnswersComponent } from './pages/answers/answers.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { BackgroundComponent } from './comps/background/background.component';
 import { ExplodingCardComponent } from './comps/exploding-card/exploding-card.component';
+import { HowToPlayComponent } from './pages/how-to-play/how-to-play.component';
 
 @NgModule({
     declarations: [
@@ -35,6 +36,7 @@ import { ExplodingCardComponent } from './comps/exploding-card/exploding-card.co
         AnswersComponent,
         BackgroundComponent,
         ExplodingCardComponent,
+        HowToPlayComponent,
     ],
     imports: [
         BrowserModule,

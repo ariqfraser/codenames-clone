@@ -31,7 +31,7 @@
 
     textarea {
         width: calc(100% - 2rem);
-        min-height: 400px;
+        min-height: 250px;
         border: 2px solid rgba(0, 0, 0, 0.1);
         border-radius: 8px;
         resize: none;
@@ -46,10 +46,43 @@
 
 .bomb-setting {
     display: flex;
+
     span:first-of-type {
         margin-right: auto;
     }
-        mat-chip-listbox {
-            
-        }
+
+    mat-chip-listbox {}
+}
+
+h2 {
+    text-align: center;
+}
+
+.how-to-section {
+    width: min(800px, 90%);
+    margin-inline: auto;
+    overflow-y: scroll;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    overflow-x: visible;
+}
+
+.step {
+    position: relative;
+    
+
+    p {
+        margin: 0;
+    }
+
+    label {
+        font-size: 4rem;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        opacity: 0.2;
+    }
 }

@@ -1,0 +1,15 @@
+<div class="instruction">
+    <ng-container *ngFor="let step of instructions; let i = index">
+        <ng-container *ngIf="i === currentStep">
+            <h1>{{ step.title }}</h1>
+            <p [innerHTML]="sanitize(step.text)">
+            </p>
+        </ng-container>
+        
+    </ng-container>
+</div>
+
+<div class="stepper">
+    <button class="step" (click)="currentStep = i" *ngFor="let x of instructions; let i = index" [class.active]="i === currentStep"></button>
+</div>
+<button routerLink="/lobby">Go back to lobby</button>

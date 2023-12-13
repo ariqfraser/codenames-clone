@@ -15,6 +15,7 @@ export class DeterministicRandomService {
   constructor() {
     this.q = Math.floor(this.m / this.a);
     this.r = this.m % this.a;
+    console.log({r: this.r, q: this.q, m: this.m, a: this.a})
   }
 
   private setSeed(seed: number) {
@@ -30,6 +31,7 @@ export class DeterministicRandomService {
     } else {
       this.seed = test + this.m;
     }
+
     return (this.seed * 4.656612875e-10) % 1; // Uniformly distributed random number between 0 and 1
   }
 
@@ -43,7 +45,7 @@ export class DeterministicRandomService {
     data: string[]
   ): string[] {
     this.setSeed(seed);
-    const selectedWords = [];
+    const selectedWords: string[] = [];
 
     const remainingIndices = data.reduce((acc, _, i) => {
       acc.push(i);

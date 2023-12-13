@@ -1,0 +1,30 @@
+:host {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.stepper {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.step {
+    height: 1rem;
+    aspect-ratio: 1/1;
+    border-radius: 500px;
+    border: none;
+    background-color: #444;
+    cursor: pointer;
+
+    &.active {
+        background-color: var(--team-b);
+    }
+}
+
+.instruction {
+    width: min(800px, 90%);
+}

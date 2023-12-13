@@ -1,34 +1,75 @@
 <div class="page-wrapper">
-  <div class="team-wrapper">
-    <label for="" class="red">Red Team</label>
-    <textarea #redTeamRef></textarea>
-  </div>
-  <div class="setting-wrapper">
-    <div class="bomb-setting">
-      <span>No. of bombs</span><span>{{ bombCount }}💣</span>
+    <div class="team-wrapper">
+        <label for="" class="red">Red Team</label>
+        <textarea #redTeamRef></textarea>
+    </div>
+    <div class="setting-wrapper">
+        <div class="bomb-setting">
+            <span>No. of bombs</span><span>{{ bombCount }}💣</span>
+        </div>
+
+        <mat-slider min="2" max="16" step="2" color="accent">
+            <input
+                matSliderThumb
+                (valueChange)="setBombCount($event)"
+                [(ngModel)]="bombCount" />
+        </mat-slider>
+        <span>Starting Team</span>
+        <mat-chip-listbox
+            aria-label="Starting Team Selection"
+            (change)="setStartingTeam($event)">
+            <mat-chip-option color="warn">Red</mat-chip-option>
+            <mat-chip-option color="accent" selected>Random</mat-chip-option>
+            <mat-chip-option>Blue</mat-chip-option>
+        </mat-chip-listbox>
+        <button (click)="shuffle()">SHUFFLE TEAMS</button>
+        <button routerLink="/how-to-play">HOW TO PLAY</button>
+        <button class="play" (click)="start()">START GAME</button>
+    </div>
+    <div class="team-wrapper">
+        <label for="" class="blue">Blue Team</label>
+        <textarea #blueTeamRef></textarea>
+    </div>
+</div>
+
+<h2>Setup Instructions</h2>
+<div class="how-to-section">
+    <div class="step">
+        <label>1</label>
+        <p>Get at least 3 other humans. (min requement is 4 humans for a normal game, 2 on each team)</p>
     </div>
 
-    <mat-slider min="2" max="16" step="2" color="accent">
-      <input
-        matSliderThumb
-        (valueChange)="setBombCount($event)"
-        [(ngModel)]="bombCount"
-      />
-    </mat-slider>
-    <span>Starting Team</span>
-    <mat-chip-listbox
-      aria-label="Starting Team Selection"
-      (change)="setStartingTeam($event)"
-    >
-      <mat-chip-option color="warn">Red</mat-chip-option>
-      <mat-chip-option color="accent" selected>Random</mat-chip-option>
-      <mat-chip-option>Blue</mat-chip-option>
-    </mat-chip-listbox>
-    <button (click)="shuffle()">SHUFFLE TEAMS</button>
-    <button class="play" (click)="start()">START GAME</button>
-  </div>
-  <div class="team-wrapper">
-    <label for="" class="blue">Blue Team</label>
-    <textarea #blueTeamRef></textarea>
-  </div>
+    <div class="step">
+        <label>2</label>
+        <p>
+            Enter player names in the "Red Team" and "Blue Team" boxes. Alternatively enter a team
+            name in each box.
+        </p>
+    </div>
+
+    <div class="step">
+        <label>2.1</label>
+        <p>
+            If you entered individual player names. You can press "shuffle teams" to shuffle
+            teams. (optional).
+        </p>
+    </div>
+
+    <div class="step">
+        <label>2.2</label>
+        <p>
+            Select the quantity of bombs you would like in the game. The higher number the
+            harder. (optional).
+        </p>
+    </div>
+
+    <div class="step">
+        <label>2.3</label>
+        <p>Select what team should start first (optional).</p>
+    </div>
+
+    <div class="step">
+        <label>3</label>
+        <p>Press play.</p>
+    </div>
 </div>
