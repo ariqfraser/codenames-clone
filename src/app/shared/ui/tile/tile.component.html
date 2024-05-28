@@ -1,0 +1,12 @@
+<button>
+    <div class="content" [class.flip]="clicked">
+        <div class="front" [class]="type">
+            <!-- @if (type === 'BOMB') {<span class="explosion">💣</span>} -->
+            <p>{{ type === 'BOMB' ? '💥' + text + '💥':  text }}</p>
+        </div>
+
+        <div class="back">
+            <span>{{ text }}</span>
+        </div>
+    </div>
+</button>

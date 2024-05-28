@@ -1,0 +1,12 @@
+<app-game-score></app-game-score>
+
+<div class="game-board">
+    @for (t of tiles(); track t.text; let i = $index) {
+        <app-tile
+            [text]="t.text"
+            [clicked]="t.clicked"
+            [type]="t.type"
+            (click)="tileClick(i)">
+        </app-tile>
+    }
+</div>

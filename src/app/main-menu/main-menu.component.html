@@ -1,0 +1,103 @@
+<h1><span>NOT</span>CODENAMES</h1>
+
+<div class="menu-nav">
+    <button
+        (click)="menuState.set('CREATE')"
+        [class.active]="menuState() === 'CREATE'"
+    >
+        CREATE GAME
+    </button>
+    <button
+        (click)="menuState.set('HOW_TO')"
+        [class.active]="menuState() === 'HOW_TO'"
+    >
+        HOW TO PLAY
+    </button>
+</div>
+
+@if (menuState() === "CREATE") {
+<div class="menu-grid">
+    <div class="section glow add-players">
+        <h4 class="section-title">ADD PLAYERS</h4>
+        <!-- <textarea
+            #textarea
+            placeholder="Click to start typing names..."
+            (keyup)="onType($event.key, textarea.value)"
+        ></textarea> -->
+        <input
+            type="text"
+            placeholder="Click to start typing!"
+            #nameRef
+            (keyup)="addPlayer($event.key, nameRef.value)"
+        />
+        <button (click)="addPlayer('Enter', nameRef.value)">ADD</button>
+    </div>
+
+    <div class="team-configurator-wrapper glow">
+        @if (!(playersBlue.length || playersRed.length)) {
+        <p class="help-text">Add some players to configure teams!</p>
+        }
+        <div
+            class="team-configurator"
+            [class.blur]="!(playersBlue.length || playersRed.length)"
+        >
+            <div
+                class="blue"
+                cdkDropList
+                #blueList="cdkDropList"
+                [cdkDropListData]="playersBlue"
+                [cdkDropListConnectedTo]="[redList]"
+                (cdkDropListDropped)="dropPlayer($event)"
+            >
+                @for (name of playersBlue; track name) {
+                <div class="player _blue" cdkDrag>
+                    <div class="player-placeholder" *cdkDragPlaceholder>
+                        {{ name }}
+                    </div>
+                    {{ name }}
+                    <mat-icon (click)="removePlayer(name)">close</mat-icon>
+                </div>
+                }
+            </div>
+            <div
+                class="red"
+                cdkDropList
+                #redList="cdkDropList"
+                [cdkDropListData]="playersRed"
+                [cdkDropListConnectedTo]="[blueList]"
+                (cdkDropListDropped)="dropPlayer($event)"
+            >
+                @for (name of playersRed; track name) {
+                <div class="player _red" cdkDrag>
+                    <div class="player-placeholder" *cdkDragPlaceholder>
+                        {{ name }}
+                    </div>
+                    {{ name }}
+                    <mat-icon (click)="removePlayer(name)">close</mat-icon>
+                </div>
+                }
+            </div>
+            <div class="team-actions">
+                <mat-icon class="action" title="Shuffle teams"
+                    >shuffle</mat-icon
+                >
+                <mat-icon
+                    class="action delete"
+                    title="Clear all"
+                    (click)="removeAllPlayers()"
+                    >delete</mat-icon
+                >
+            </div>
+            <span class="info-text">Drag names to switch teams</span>
+        </div>
+    </div>
+
+    <div class="section glow">
+        <h4 class="section-title">GAME SETTINGS</h4>
+        <h4 class="section-title">Bomb Count: 4</h4>
+    </div>
+</div>
+
+<button class="start-game" (click)="start()">CREATE NEW</button>
+<button>CONTINUE PREVIOUS GAME</button>
+}
