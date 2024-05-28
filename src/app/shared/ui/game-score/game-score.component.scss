@@ -54,7 +54,7 @@ $red: #D83D59;
 .score {
     height: 100%;
     background-color: $blue;
-    transition: width 400ms ease-out;
+    transition: width 400ms 200ms ease-out;
 
     &.red {
         background-color: $red;
