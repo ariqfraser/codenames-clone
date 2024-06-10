@@ -8,15 +8,25 @@
         </div>
     </div>
 
-    
-
-    <p class="playing-first">{{red().total > blue().total ? 'RED' : 'BLUE'}} PLAYS FIRST</p>
+    <div class="center">
+        <p class="playing-first">
+            {{ red().total > blue().total ? "RED" : "BLUE" }} PLAYS FIRST
+        </p>
+        <div class="bombs">
+            @if (gameData().bombCount > 4) {
+            <span>{{ gameData().bombCount + "x 💣" }}</span>
+            } @else { @for (_ of bombArray; track $index) {
+            <span>💣</span>
+            } }
+        </div>
+    </div>
 
     <div class="score-border red">
         <div class="score-wrapper row">
             <div class="score red" [style.width]="red().percent + '%'"></div>
             <span class="score-text red">
-                {{ red().score }}/{{ red().total }}</span>
+                {{ red().score }}/{{ red().total }}</span
+            >
         </div>
     </div>
 </div>
@@ -24,21 +34,15 @@
 <div class="wrapper">
     <div class="players">
         @for(name of gameData().teamBlue; track $index) {
-            <div class="player blue">{{name}}</div>
+        <div class="player blue">{{ name }}</div>
         }
     </div>
 
-    <div class="bombs">
-        @if (gameData().bombCount > 4) {
-            <span>{{ gameData().bombCount + "x 💣" }}</span>
-        } @else { @for (_ of bombArray; track $index) {
-            <span>💣</span> 
-        } }
-    </div>
+    
 
     <div class="players red">
         @for(name of gameData().teamRed; track $index) {
-            <div class="player red">{{name}}</div>
+        <div class="player red">{{ name }}</div>
         }
     </div>
 </div>

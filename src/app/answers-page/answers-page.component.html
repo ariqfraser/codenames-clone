@@ -1,0 +1,12 @@
+<h2>{{this.gameDate() ? 'RED' : 'BLUE'}} PLAYS FIRST</h2>
+
+<div class="board">
+    @for (t of tiles(); track t.text; let i = $index) {
+        <app-tile
+            [text]="t.text"
+            [clicked]="t.clicked"
+            [type]="t.type">
+        </app-tile>
+    }
+</div>
+

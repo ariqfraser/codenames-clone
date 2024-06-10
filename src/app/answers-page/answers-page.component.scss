@@ -1,0 +1,17 @@
+.board {
+    width: min(70rem, 90%);
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 6rem;
+    gap: 1rem;
+
+    padding-top: 2rem;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+    margin-top: 1rem;
+}

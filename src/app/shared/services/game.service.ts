@@ -40,13 +40,20 @@ export class GameService {
         this.router.navigate(['/play']);
     }
 
-    private initGame() {
-        this.lcg.setSeed(this.gameData().seed);
+    generateAnswers(seed: number, bombCount: number) {
+        this.initGame(seed, bombCount);
+        this.tiles.update(tiles => {
+            return tiles.map(tile => ({...tile, clicked: true}))
+        })
+    }
+
+    private initGame(seed?: number, bombCount?: number) {
+        this.lcg.setSeed(seed || this.gameData().seed);
         this.startingTeam = Math.round(this.lcg.next()) as 0 | 1;
         this.tiles.set(
             this.tileService.generateTiles(
                 this.startingTeam,
-                this.gameData().bombCount,
+                bombCount || this.gameData().bombCount,
                 this.gameData().clickedTiles
             )
         );

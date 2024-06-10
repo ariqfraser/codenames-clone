@@ -62,6 +62,20 @@ export class MainMenuComponent implements OnInit {
         }
     }
 
+    shuffle() {
+        const array = [...this.playersRed, ...this.playersBlue];
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        
+        const max = array.length - 1;
+        const mid = Math.floor(max / 2);
+
+        this.playersBlue = array.splice(0, mid);
+        this.playersRed = array;
+    }
+
     addPlayer(key: string, name: string) {
         if (key !== 'Enter') return;
         name = name.trim();
