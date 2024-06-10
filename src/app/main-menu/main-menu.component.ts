@@ -69,7 +69,7 @@ export class MainMenuComponent implements OnInit {
             [array[i], array[j]] = [array[j], array[i]];
         }
         
-        const max = array.length - 1;
+        const max = array.length;
         const mid = Math.floor(max / 2);
 
         this.playersBlue = array.splice(0, mid);

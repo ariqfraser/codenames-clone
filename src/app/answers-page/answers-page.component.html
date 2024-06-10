@@ -5,7 +5,8 @@
         <app-tile
             [text]="t.text"
             [clicked]="t.clicked"
-            [type]="t.type">
+            [type]="t.type"
+            (click)="clickTile(t.text)">
         </app-tile>
     }
 </div>

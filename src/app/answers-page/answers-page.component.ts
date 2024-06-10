@@ -44,4 +44,11 @@ export class AnswersPageComponent implements OnInit {
         this.game.generateAnswers(this.seed()!, this.bombs()!);
         console.log();
     }
+
+    clickTile(text: string) {
+        const tiles = this.game.tiles();
+        tiles.find((t) => t.text === text)!.clicked = false;
+
+        this.game.tiles.set(tiles);
+    }
 }
